@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qurbani Hisaab — Eid ul Adha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1a6b3a;
+    --green-light: #d4edd9;
+    --green-mid: #2e9b57;
+    --gold: #c8922a;
+    --gold-light: #fdf3de;
+    --gold-mid: #e8a93a;
+    --blue: #1a4f8b;
+    --blue-light: #dceaf9;
+    --blue-mid: #2e73cc;
+    --bg: #f5f0e8;
+    --bg-card: #fffef9;
+    --text: #1c1a14;
+    --text-muted: #6b6455;
+    --text-faint: #a89e8c;
+    --border: #e0d8c8;
+    --border-dark: #c8bc9e;
+    --shadow: 0 2px 16px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(26,107,58,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 85% 90%, rgba(200,146,42,0.08) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8922a' fill-opacity='0.03'%3E%3Cpath d='M30 0l3 9h9l-7.5 5.4 3 9L30 18l-7.5 5.4 3-9L18 9h9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: linear-gradient(135deg, #1a3d1f 0%, #1a4f2a 50%, #0f3320 100%);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 0l4 12h12l-10 7.2 4 12L40 24l-10 7.2 4-12L24 12h12z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .crescent { font-size: 2.8rem; margin-bottom: 0.5rem; display: block; filter: drop-shadow(0 2px 8px rgba(200,146,42,0.4)); }
+  .site-header h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: #f5e6c0;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+  .site-header p {
+    color: rgba(245,230,192,0.65);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+  .gold-bar {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-mid), var(--gold), var(--gold-mid), transparent);
+    margin-top: 1.5rem;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  /* ── Summary cards ── */
+  .cow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; }
+  .cow-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .cow-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .cow-card::after {
+    content: '🐄';
+    position: absolute;
+    right: -4px; bottom: -6px;
+    font-size: 4.5rem;
+    opacity: 0.06;
+    transform: scaleX(-1);
+    line-height: 1;
+  }
+  .cow-card.c1 { border-top: 4px solid var(--green-mid); }
+  .cow-card.c2 { border-top: 4px solid var(--blue-mid); }
+  .cow-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .cow-card.c1 .cow-name { color: var(--green); }
+  .cow-card.c2 .cow-name { color: var(--blue); }
+  .cow-price { font-family: 'Amiri', serif; font-size: 1.9rem; color: var(--text); line-height: 1; }
+  .cow-hissa-row { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border-dark); }
+  .hissa-label { font-size: 0.72rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .hissa-amount { font-size: 1.15rem; font-weight: 600; margin-top: 1px; }
+  .cow-card.c1 .hissa-amount { color: var(--green); }
+  .cow-card.c2 .hissa-amount { color: var(--blue); }
+  .extra-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .cow-card.c1 .extra-badge { background: var(--green-light); color: var(--green); }
+  .cow-card.c2 .extra-badge { background: var(--blue-light); color: var(--blue); }
+
+  /* ── Add expense panel ── */
+  .panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .panel-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .panel-title span { font-size: 1.1rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field.full { grid-column: 1 / -1; }
+  label.field-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  select, input[type=text], input[type=number] {
+    height: 42px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border-dark);
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 0 12px;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6455' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+  select:focus, input:focus {
+    outline: none;
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(46,155,87,0.12);
+    background: white;
+  }
+  .btn-add {
+    width: 100%;
+    height: 44px;
+    margin-top: 0.25rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: linear-gradient(135deg, var(--green), var(--green-mid));
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: filter 0.15s, transform 0.12s;
+    box-shadow: 0 2px 8px rgba(26,107,58,0.3);
+  }
+  .btn-add:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .btn-add:active { transform: scale(0.98); }
+
+  /* ── Transactions ── */
+  .txn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .txn-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .txn-header {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .txn-header.h1 { background: linear-gradient(90deg, var(--green-light), transparent); }
+  .txn-header.h2 { background: linear-gradient(90deg, var(--blue-light), transparent); }
+  .txn-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .txn-dot.d1 { background: var(--green-mid); }
+  .txn-dot.d2 { background: var(--blue-mid); }
+  .txn-head-title { font-weight: 600; font-size: 0.88rem; }
+  .txn-count { margin-left: auto; font-size: 0.72rem; color: var(--text-faint); }
+
+  .txn-list { padding: 0; }
+  .txn-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 0.7rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    animation: slideIn 0.25s ease;
+  }
+  .txn-item:last-child { border-bottom: none; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cat-pill {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .cat-Fodder     { background: #e8f5e9; color: #2e7d32; }
+  .cat-Tent       { background: #fff8e1; color: #f57f17; }
+  .cat-Transport  { background: #e3f2fd; color: #1565c0; }
+  .cat-Slaughter  { background: #fce4ec; color: #c62828; }
+  .cat-Misc       { background: #f3e5f5; color: #6a1b9a; }
+  .txn-desc { font-size: 0.82rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .txn-amt { font-size: 0.88rem; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .btn-del {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-faint); font-size: 0.9rem; padding: 2px 4px;
+    border-radius: 6px; line-height: 1;
+    transition: color 0.15s, background 0.15s;
+  }
+  .btn-del:hover { color: #c62828; background: #fce4ec; }
+
+  .txn-empty { padding: 2rem 1.25rem; text-align: center; color: var(--text-faint); font-size: 0.82rem; }
+  .txn-empty .empty-icon { font-size: 2rem; margin-bottom: 0.4rem; opacity: 0.4; }
+
+  .txn-footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafaf7;
+  }
+  .footer-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 600; }
+  .footer-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: #1a3d1f; color: #f5e6c0;
+    padding: 0.6rem 1.25rem; border-radius: 30px; font-size: 0.82rem;
+    box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 9999; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── Sync status ── */
+  .sync-bar {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    padding: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .sync-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); margin-right: 5px; vertical-align: middle; }
+  .sync-dot.syncing { background: var(--gold); animation: pulse 1s infinite; }
+  .sync-dot.error { background: #c62828; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .cow-grid, .txn-grid, .form-grid { grid-template-columns: 1fr; }
+    .site-header { padding: 2rem 1rem 1.5rem; }
+  }
+
+  /* ── Footer ── */
+  .app-footer { text-align: center; margin-top: 3rem; color: var(--text-faint); font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="crescent">☪</span>
+  <h1>Qurbani Hisaab</h1>
+  <p>Eid ul Adha — Expense Tracker</p>
+  <div class="gold-bar"></div>
+</header>
+
+<main class="container">
+
+  <!-- Cow summary cards -->
+  <div class="cow-grid">
+    <div class="cow-card c1">
+      <div class="cow-name">🐄 Cow 1</div>
+      <div class="cow-price" id="c1-total">Rs 1,45,000</div>
+      <div class="extra-badge" id="c1-extra">Base price</div>
+      <div class="cow-hissa-row">
+        <div class="hissa-label">Per hissa (÷7)</div>
+        <div class="hissa-amount" id="c1-hissa">Rs 20,714</div>
+      </div>
+    </div>
+    <div class="cow-card c2">
+      <div class="cow-name">🐄 Cow 2</div>
+      <div class="cow-price" id="c2-total">Rs 1,61,000</div>
+      <div class="extra-badge" id="c2-extra">Base price</div>
+      <div class="cow-hissa-row">
+        <div class="hissa-label">Per hissa (÷7)</div>
+        <div class="hissa-amount" id="c2-hissa">Rs 23,000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add expense -->
+  <div class="panel">
+    <div class="panel-title"><span>➕</span> Add Expense</div>
+    <div class="form-grid">
+      <div class="field">
+        <label class="field-label" for="sel-cow">Cow</label>
+        <select id="sel-cow">
+          <option value="1">Cow 1</option>
+          <option value="2">Cow 2</option>
+          <option value="both">Both (split equally)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="sel-cat">Category</label>
+        <select id="sel-cat">
+          <option>Fodder</option>
+          <option>Tent</option>
+          <option>Transport</option>
+          <option>Slaughter</option>
+          <option>Misc</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="inp-desc">Description</label>
+        <input type="text" id="inp-desc" placeholder="e.g. Dal mandi transport…" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="inp-amt">Amount (Rs)</label>
+        <input type="number" id="inp-amt" placeholder="0" min="0" />
+      </div>
+      <div class="field full">
+        <button class="btn-add" onclick="addTxn()">✦ Add to Hisaab</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transactions -->
+  <div class="txn-grid">
+    <div class="txn-panel">
+      <div class="txn-header h1">
+        <span class="txn-dot d1"></span>
+        <span class="txn-head-title">Cow 1 — Kharchay</span>
+        <span class="txn-count" id="c1-count">0 entries</span>
+      </div>
+      <div id="t1-list"></div>
+      <div class="txn-footer" id="t1-footer" style="display:none">
+        <span class="footer-label">Total extra</span>
+        <span class="footer-val" id="t1-extra-total">Rs 0</span>
+      </div>
+    </div>
+    <div class="txn-panel">
+      <div class="txn-header h2">
+        <span class="txn-dot d2"></span>
+        <span class="txn-head-title">Cow 2 — Kharchay</span>
+        <span class="txn-count" id="c2-count">0 entries</span>
+      </div>
+      <div id="t2-list"></div>
+      <div class="txn-footer" id="t2-footer" style="display:none">
+        <span class="footer-label">Total extra</span>
+        <span class="footer-val" id="t2-extra-total">Rs 0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sync-bar">
+    <span class="sync-dot" id="sync-dot"></span>
+    <span id="sync-label">Loading data…</span>
+  </div>
+
+  <footer class="app-footer">Eid Mubarak 🌙 — Hissa recalculates automatically on every entry</footer>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const BASE = { 1: 145000, 2: 161000 };
+const STORAGE_KEY = 'qurbani_hisaab_v1';
+let txns = [];
+let nextId = 1;
+let syncTimer = null;
+
+// ── Storage backend: use localStorage with a "sync to server" simulation
+// For real shared-data deployment, replace readData/writeData with a backend API call.
+// Here we use localStorage as the data store so the file works standalone,
+// with a share key in the URL so all users sharing the same URL share the same key.
+
+function getStoreKey() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('room') || 'default';
+}
+
+const FULL_KEY = STORAGE_KEY + '_' + getStoreKey();
+
+function readData() {
+  try {
+    const raw = localStorage.getItem(FULL_KEY);
+    if (!raw) return { txns: [], nextId: 1 };
+    return JSON.parse(raw);
+  } catch(e) { return { txns: [], nextId: 1 }; }
+}
+
+function writeData() {
+  try {
+    localStorage.setItem(FULL_KEY, JSON.stringify({ txns, nextId }));
+    setSyncStatus('saved');
+  } catch(e) { setSyncStatus('error'); }
+}
+
+function setSyncStatus(state) {
+  const dot = document.getElementById('sync-dot');
+  const label = document.getElementById('sync-label');
+  dot.className = 'sync-dot';
+  if (state === 'loading') { dot.classList.add('syncing'); label.textContent = 'Loading…'; }
+  else if (state === 'saving') { dot.classList.add('syncing'); label.textContent = 'Saving…'; }
+  else if (state === 'saved') { label.textContent = 'Data saved — room: ' + getStoreKey(); }
+  else if (state === 'error') { dot.classList.add('error'); label.textContent = 'Save failed — check storage'; }
+}
+
+// ── Poll for updates every 5s (so multiple tabs/devices see changes)
+function pollUpdates() {
+  const fresh = readData();
+  const freshStr = JSON.stringify(fresh.txns);
+  const currStr = JSON.stringify(txns);
+  if (freshStr !== currStr) {
+    txns = fresh.txns;
+    nextId = fresh.nextId;
+    render();
+    toast('📥 Hisaab updated');
+  }
+}
+
+// ── Formatting
+function fmt(n) { return 'Rs ' + Math.round(n).toLocaleString('en-PK'); }
+
+// ── Render
+function render() {
+  [1,2].forEach(c => {
+    const rows = txns.filter(t => t.cow === c);
+    const extra = rows.reduce((s,t) => s + t.amt, 0);
+    const total = BASE[c] + extra;
+    const hissa = total / 7;
+
+    document.getElementById('c'+c+'-total').textContent = fmt(total);
+    document.getElementById('c'+c+'-hissa').textContent = fmt(hissa);
+
+    const eb = document.getElementById('c'+c+'-extra');
+    if (extra > 0) {
+      eb.textContent = '+' + fmt(extra) + ' extra';
+      eb.style.display = 'inline-block';
+    } else {
+      eb.textContent = 'Base price only';
+      eb.style.display = 'inline-block';
+    }
+
+    const listEl = document.getElementById('t'+c+'-list');
+    const footer = document.getElementById('t'+c+'-footer');
+    const count = document.getElementById('c'+c+'-count');
+
+    count.textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries');
+
+    if (rows.length === 0) {
+      listEl.innerHTML = '<div class="txn-empty"><div class="empty-icon">📋</div><div>No expenses added yet</div></div>';
+      footer.style.display = 'none';
+    } else {
+      listEl.innerHTML = rows.map(t => `
+        <div class="txn-item">
+          <span class="cat-pill cat-${t.cat}">${t.cat}</span>
+          <span class="txn-desc" title="${t.desc || ''}">${t.desc || '—'}</span>
+          <span class="txn-amt">${fmt(t.amt)}</span>
+          <button class="btn-del" onclick="del(${t.id})" title="Delete" aria-label="Delete entry">✕</button>
+        </div>
+      `).join('');
+      footer.style.display = 'flex';
+      document.getElementById('t'+c+'-extra-total').textContent = fmt(extra);
+    }
+  });
+}
+
+// ── Add
+function addTxn() {
+  const cow = document.getElementById('sel-cow').value;
+  const cat = document.getElementById('sel-cat').value;
+  const desc = document.getElementById('inp-desc').value.trim();
+  const amtRaw = parseFloat(document.getElementById('inp-amt').value);
+
+  if (!amtRaw || amtRaw <= 0) {
+    document.getElementById('inp-amt').focus();
+    shake(document.getElementById('inp-amt'));
+    return;
+  }
+
+  setSyncStatus('saving');
+  if (cow === 'both') {
+    const half = amtRaw / 2;
+    txns.push({ id: nextId++, cow: 1, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half });
+    txns.push({ id: nextId++, cow: 2, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half });
+    toast('✦ Added to both cows (Rs ' + Math.round(half).toLocaleString('en-PK') + ' each)');
+  } else {
+    txns.push({ id: nextId++, cow: parseInt(cow), cat, desc, amt: amtRaw });
+    toast('✦ Added to Cow ' + cow);
+  }
+
+  document.getElementById('inp-amt').value = '';
+  document.getElementById('inp-desc').value = '';
+  writeData();
+  render();
+}
+
+// ── Delete
+function del(id) {
+  txns = txns.filter(t => t.id !== id);
+  writeData();
+  render();
+  toast('🗑 Entry removed');
+}
+
+// ── Toast
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// ── Shake animation for invalid input
+function shake(el) {
+  el.style.animation = 'none';
+  el.style.borderColor = '#c62828';
+  setTimeout(() => {
+    el.style.borderColor = '';
+    el.style.boxShadow = '0 0 0 3px rgba(198,40,40,0.15)';
+    setTimeout(() => { el.style.boxShadow = ''; }, 600);
+  }, 150);
+}
+
+// ── Enter key on amount field
+document.getElementById('inp-amt').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTxn();
+});
+
+// ── Init
+setSyncStatus('loading');
+const saved = readData();
+txns = saved.txns;
+nextId = saved.nextId;
+render();
+setSyncStatus('saved');
+
+// Poll every 8s for multi-device sync
+setInterval(pollUpdates, 8000);
+</script>
+</body>
+</html>
