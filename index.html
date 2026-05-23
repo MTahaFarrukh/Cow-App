@@ -255,7 +255,7 @@
 <main class="container">
   <div class="cow-grid">
     <div class="cow-card c1">
-      <div class="cow-name">🐄 Cow 1</div>
+      <div class="cow-name">🐄 Taha Cow</div>
       <div class="cow-price" id="c1-total">Rs 1,45,000</div>
       <div class="extra-badge" id="c1-extra">Base price only</div>
       <div class="cow-hissa-row">
@@ -264,7 +264,7 @@
       </div>
     </div>
     <div class="cow-card c2">
-      <div class="cow-name">🐄 Cow 2</div>
+      <div class="cow-name">🐄 Sikander Cow</div>
       <div class="cow-price" id="c2-total">Rs 1,61,000</div>
       <div class="extra-badge" id="c2-extra">Base price only</div>
       <div class="cow-hissa-row">
@@ -280,8 +280,8 @@
       <div class="field">
         <label class="field-label" for="sel-cow">Cow</label>
         <select id="sel-cow">
-          <option value="1">Cow 1</option>
-          <option value="2">Cow 2</option>
+          <option value="1">Taha Cow</option>
+          <option value="2">Sikander Cow</option>
           <option value="both">Both (split equally)</option>
         </select>
       </div>
@@ -313,7 +313,7 @@
     <div class="txn-panel">
       <div class="txn-header h1">
         <span class="txn-dot d1"></span>
-        <span class="txn-head-title">Cow 1 — Kharchay</span>
+        <span class="txn-head-title">Taha Cow — Kharchay</span>
         <span class="txn-count" id="c1-count">0 entries</span>
       </div>
       <div id="t1-list"></div>
@@ -325,7 +325,7 @@
     <div class="txn-panel">
       <div class="txn-header h2">
         <span class="txn-dot d2"></span>
-        <span class="txn-head-title">Cow 2 — Kharchay</span>
+        <span class="txn-head-title">Sikander Cow — Kharchay</span>
         <span class="txn-count" id="c2-count">0 entries</span>
       </div>
       <div id="t2-list"></div>
@@ -462,7 +462,7 @@
       document.getElementById('inp-amt').value = '';
       document.getElementById('inp-desc').value = '';
       btn.disabled = false;
-      toast(cow === 'both' ? '✦ Added to both cows' : '✦ Added to Cow ' + cow);
+      toast(cow === 'both' ? '✦ Added to both cows' : '✦ Added to ' + cow);
     }).catch(e => {
       console.error(e);
       btn.disabled = false;
