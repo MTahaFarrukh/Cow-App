@@ -487,7 +487,6 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
   const txnsRef = db.ref('transactions');
-  const metaRef = db.ref('meta');
 
   // ── State ──
   const BASE = { 1: 145000, 2: 161000 };
@@ -632,19 +631,13 @@
   function seedInitialPayments() {
     if (seedChecked) return;
     seedChecked = true;
-    metaRef.child('initialPaymentsSeeded').once('value', snap => {
-      if (snap.val()) return;
-      if (Object.values(txns).some(t => t.initial)) {
-        metaRef.child('initialPaymentsSeeded').set(true);
-        return;
-      }
-      setSyncStatus('saving');
-      const ts = Date.now();
-      Promise.all(
-        INITIAL_PAYMENTS.map(p => txnsRef.push({ ...p, ts: ts - 1 }))
-      ).then(() => metaRef.child('initialPaymentsSeeded').set(true))
-        .catch(e => { console.error(e); setSyncStatus('error'); });
-    });
+    if (Object.values(txns).some(t => t.initial)) return;
+    setSyncStatus('saving');
+    const ts = Date.now();
+    Promise.all(
+      INITIAL_PAYMENTS.map((p, i) => txnsRef.push({ ...p, ts: ts - 2 + i }))
+    ).then(() => toast('Initial payments add ho gaye'))
+      .catch(e => { console.error(e); setSyncStatus('error'); });
   }
 
   // ── Firebase real-time listener ──
