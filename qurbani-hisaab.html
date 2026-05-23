@@ -44,7 +44,6 @@
       url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8922a' fill-opacity='0.03'%3E%3Cpath d='M30 0l3 9h9l-7.5 5.4 3 9L30 18l-7.5 5.4 3-9L18 9h9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
-  /* ── Header ── */
   .site-header {
     background: linear-gradient(135deg, #1a3d1f 0%, #1a4f2a 50%, #0f3320 100%);
     padding: 2.5rem 1.5rem 2rem;
@@ -66,21 +65,15 @@
     line-height: 1.2;
     margin-bottom: 0.3rem;
   }
-  .site-header p {
-    color: rgba(245,230,192,0.65);
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-  }
+  .site-header p { color: rgba(245,230,192,0.65); font-size: 0.85rem; letter-spacing: 0.04em; }
   .gold-bar {
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--gold-mid), var(--gold), var(--gold-mid), transparent);
     margin-top: 1.5rem;
   }
 
-  /* ── Layout ── */
   .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
 
-  /* ── Summary cards ── */
   .cow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; }
   .cow-card {
     background: var(--bg-card);
@@ -95,22 +88,12 @@
   .cow-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
   .cow-card::after {
     content: '🐄';
-    position: absolute;
-    right: -4px; bottom: -6px;
-    font-size: 4.5rem;
-    opacity: 0.06;
-    transform: scaleX(-1);
-    line-height: 1;
+    position: absolute; right: -4px; bottom: -6px;
+    font-size: 4.5rem; opacity: 0.06; transform: scaleX(-1); line-height: 1;
   }
   .cow-card.c1 { border-top: 4px solid var(--green-mid); }
   .cow-card.c2 { border-top: 4px solid var(--blue-mid); }
-  .cow-name {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-  }
+  .cow-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.6rem; }
   .cow-card.c1 .cow-name { color: var(--green); }
   .cow-card.c2 .cow-name { color: var(--blue); }
   .cow-price { font-family: 'Amiri', serif; font-size: 1.9rem; color: var(--text); line-height: 1; }
@@ -120,105 +103,57 @@
   .cow-card.c1 .hissa-amount { color: var(--green); }
   .cow-card.c2 .hissa-amount { color: var(--blue); }
   .extra-badge {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 0.7rem;
-    padding: 2px 9px;
-    border-radius: 20px;
-    font-weight: 500;
+    display: inline-block; margin-top: 0.5rem;
+    font-size: 0.7rem; padding: 2px 9px; border-radius: 20px; font-weight: 500;
   }
   .cow-card.c1 .extra-badge { background: var(--green-light); color: var(--green); }
   .cow-card.c2 .extra-badge { background: var(--blue-light); color: var(--blue); }
 
-  /* ── Add expense panel ── */
   .panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 1.5rem;
-    margin-bottom: 1.75rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.75rem;
   }
   .panel-title {
-    font-family: 'Amiri', serif;
-    font-size: 1.25rem;
-    color: var(--text);
-    margin-bottom: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-family: 'Amiri', serif; font-size: 1.25rem; color: var(--text);
+    margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.5rem;
   }
-  .panel-title span { font-size: 1.1rem; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .field { display: flex; flex-direction: column; gap: 5px; }
   .field.full { grid-column: 1 / -1; }
   label.field-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
   select, input[type=text], input[type=number] {
-    height: 42px;
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--border-dark);
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
-    padding: 0 12px;
-    width: 100%;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    appearance: none;
-    -webkit-appearance: none;
+    height: 42px; border-radius: var(--radius-sm); border: 1.5px solid var(--border-dark);
+    background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem; padding: 0 12px; width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s; appearance: none; -webkit-appearance: none;
   }
   select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6455' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 32px;
+    background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
   }
   select:focus, input:focus {
-    outline: none;
-    border-color: var(--green-mid);
-    box-shadow: 0 0 0 3px rgba(46,155,87,0.12);
-    background: white;
+    outline: none; border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(46,155,87,0.12); background: white;
   }
   .btn-add {
-    width: 100%;
-    height: 44px;
-    margin-top: 0.25rem;
-    border-radius: var(--radius-sm);
-    border: none;
-    background: linear-gradient(135deg, var(--green), var(--green-mid));
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.03em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: filter 0.15s, transform 0.12s;
+    width: 100%; height: 44px; margin-top: 0.25rem; border-radius: var(--radius-sm); border: none;
+    background: linear-gradient(135deg, var(--green), var(--green-mid)); color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; letter-spacing: 0.03em; display: flex; align-items: center;
+    justify-content: center; gap: 6px; transition: filter 0.15s, transform 0.12s;
     box-shadow: 0 2px 8px rgba(26,107,58,0.3);
   }
   .btn-add:hover { filter: brightness(1.08); transform: translateY(-1px); }
   .btn-add:active { transform: scale(0.98); }
+  .btn-add:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-  /* ── Transactions ── */
   .txn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .txn-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
   }
-  .txn-header {
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
+  .txn-header { padding: 1rem 1.25rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
   .txn-header.h1 { background: linear-gradient(90deg, var(--green-light), transparent); }
   .txn-header.h2 { background: linear-gradient(90deg, var(--blue-light), transparent); }
   .txn-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -227,37 +162,26 @@
   .txn-head-title { font-weight: 600; font-size: 0.88rem; }
   .txn-count { margin-left: auto; font-size: 0.72rem; color: var(--text-faint); }
 
-  .txn-list { padding: 0; }
   .txn-item {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    align-items: center;
-    gap: 8px;
-    padding: 0.7rem 1.25rem;
-    border-bottom: 1px solid var(--border);
-    animation: slideIn 0.25s ease;
+    display: grid; grid-template-columns: auto 1fr auto auto;
+    align-items: center; gap: 8px; padding: 0.7rem 1.25rem;
+    border-bottom: 1px solid var(--border); animation: slideIn 0.25s ease;
   }
   .txn-item:last-child { border-bottom: none; }
   @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-  .cat-pill {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 3px 8px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .cat-Fodder     { background: #e8f5e9; color: #2e7d32; }
-  .cat-Tent       { background: #fff8e1; color: #f57f17; }
-  .cat-Transport  { background: #e3f2fd; color: #1565c0; }
-  .cat-Slaughter  { background: #fce4ec; color: #c62828; }
-  .cat-Misc       { background: #f3e5f5; color: #6a1b9a; }
+
+  .cat-pill { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+  .cat-Fodder    { background: #e8f5e9; color: #2e7d32; }
+  .cat-Tent      { background: #fff8e1; color: #f57f17; }
+  .cat-Transport { background: #e3f2fd; color: #1565c0; }
+  .cat-Slaughter { background: #fce4ec; color: #c62828; }
+  .cat-Misc      { background: #f3e5f5; color: #6a1b9a; }
+
   .txn-desc { font-size: 0.82rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .txn-amt { font-size: 0.88rem; font-weight: 600; color: var(--text); white-space: nowrap; }
   .btn-del {
-    background: none; border: none; cursor: pointer;
-    color: var(--text-faint); font-size: 0.9rem; padding: 2px 4px;
-    border-radius: 6px; line-height: 1;
+    background: none; border: none; cursor: pointer; color: var(--text-faint);
+    font-size: 0.9rem; padding: 2px 4px; border-radius: 6px; line-height: 1;
     transition: color 0.15s, background 0.15s;
   }
   .btn-del:hover { color: #c62828; background: #fce4ec; }
@@ -266,51 +190,60 @@
   .txn-empty .empty-icon { font-size: 2rem; margin-bottom: 0.4rem; opacity: 0.4; }
 
   .txn-footer {
-    padding: 0.75rem 1.25rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fafaf7;
+    padding: 0.75rem 1.25rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; background: #fafaf7;
   }
   .footer-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 600; }
   .footer-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
 
-  /* ── Toast ── */
+  /* Sync bar */
+  .sync-bar {
+    text-align: center; font-size: 0.72rem; color: var(--text-faint);
+    padding: 0.75rem; letter-spacing: 0.03em; display: flex;
+    align-items: center; justify-content: center; gap: 6px; margin-top: 1rem;
+  }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-mid); flex-shrink: 0; }
+  .sync-dot.syncing { background: var(--gold); animation: pulse 1s infinite; }
+  .sync-dot.error   { background: #c62828; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  /* Toast */
   .toast {
     position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(20px);
-    background: #1a3d1f; color: #f5e6c0;
-    padding: 0.6rem 1.25rem; border-radius: 30px; font-size: 0.82rem;
-    box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s;
-    z-index: 9999; white-space: nowrap;
+    background: #1a3d1f; color: #f5e6c0; padding: 0.6rem 1.4rem; border-radius: 30px;
+    font-size: 0.82rem; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s; z-index: 9999; white-space: nowrap;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* ── Sync status ── */
-  .sync-bar {
-    text-align: center;
-    font-size: 0.72rem;
-    color: var(--text-faint);
-    padding: 0.5rem;
-    letter-spacing: 0.03em;
+  /* Loading overlay */
+  .loading-overlay {
+    position: fixed; inset: 0; background: rgba(245,240,232,0.85);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 1000; gap: 1rem;
   }
-  .sync-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); margin-right: 5px; vertical-align: middle; }
-  .sync-dot.syncing { background: var(--gold); animation: pulse 1s infinite; }
-  .sync-dot.error { background: #c62828; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .loading-overlay .spinner {
+    width: 40px; height: 40px; border: 3px solid var(--border-dark);
+    border-top-color: var(--green-mid); border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-overlay p { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--text-muted); }
 
-  /* ── Responsive ── */
   @media (max-width: 600px) {
     .cow-grid, .txn-grid, .form-grid { grid-template-columns: 1fr; }
     .site-header { padding: 2rem 1rem 1.5rem; }
   }
 
-  /* ── Footer ── */
   .app-footer { text-align: center; margin-top: 3rem; color: var(--text-faint); font-size: 0.75rem; }
 </style>
 </head>
 <body>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spinner"></div>
+  <p>Loading hisaab…</p>
+</div>
 
 <header class="site-header">
   <span class="crescent">☪</span>
@@ -320,13 +253,11 @@
 </header>
 
 <main class="container">
-
-  <!-- Cow summary cards -->
   <div class="cow-grid">
     <div class="cow-card c1">
       <div class="cow-name">🐄 Cow 1</div>
       <div class="cow-price" id="c1-total">Rs 1,45,000</div>
-      <div class="extra-badge" id="c1-extra">Base price</div>
+      <div class="extra-badge" id="c1-extra">Base price only</div>
       <div class="cow-hissa-row">
         <div class="hissa-label">Per hissa (÷7)</div>
         <div class="hissa-amount" id="c1-hissa">Rs 20,714</div>
@@ -335,7 +266,7 @@
     <div class="cow-card c2">
       <div class="cow-name">🐄 Cow 2</div>
       <div class="cow-price" id="c2-total">Rs 1,61,000</div>
-      <div class="extra-badge" id="c2-extra">Base price</div>
+      <div class="extra-badge" id="c2-extra">Base price only</div>
       <div class="cow-hissa-row">
         <div class="hissa-label">Per hissa (÷7)</div>
         <div class="hissa-amount" id="c2-hissa">Rs 23,000</div>
@@ -343,7 +274,6 @@
     </div>
   </div>
 
-  <!-- Add expense -->
   <div class="panel">
     <div class="panel-title"><span>➕</span> Add Expense</div>
     <div class="form-grid">
@@ -374,12 +304,11 @@
         <input type="number" id="inp-amt" placeholder="0" min="0" />
       </div>
       <div class="field full">
-        <button class="btn-add" onclick="addTxn()">✦ Add to Hisaab</button>
+        <button class="btn-add" id="btn-add" onclick="addTxn()">✦ Add to Hisaab</button>
       </div>
     </div>
   </div>
 
-  <!-- Transactions -->
   <div class="txn-grid">
     <div class="txn-panel">
       <div class="txn-header h1">
@@ -408,192 +337,179 @@
   </div>
 
   <div class="sync-bar">
-    <span class="sync-dot" id="sync-dot"></span>
-    <span id="sync-label">Loading data…</span>
+    <span class="sync-dot syncing" id="sync-dot"></span>
+    <span id="sync-label">Connecting to Firebase…</span>
   </div>
 
-  <footer class="app-footer">Eid Mubarak 🌙 — Hissa recalculates automatically on every entry</footer>
+  <footer class="app-footer">Eid Mubarak 🌙 — Data syncs live across all devices</footer>
 </main>
 
 <div class="toast" id="toast"></div>
 
+<!-- Firebase SDKs (modular, compat build for easy use) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <script>
-const BASE = { 1: 145000, 2: 161000 };
-const STORAGE_KEY = 'qurbani_hisaab_v1';
-let txns = [];
-let nextId = 1;
-let syncTimer = null;
+  // ── Firebase init ──
+  const firebaseConfig = {
+    apiKey: "AIzaSyAW7ohnLhdOCwcM3c6Hp9XsiUAje9p_TRQ",
+    authDomain: "qurbani-907b0.firebaseapp.com",
+    databaseURL: "https://qurbani-907b0-default-rtdb.firebaseio.com",
+    projectId: "qurbani-907b0",
+    storageBucket: "qurbani-907b0.firebasestorage.app",
+    messagingSenderId: "1081723972122",
+    appId: "1:1081723972122:web:9ffdf0d9b8f0ba8811ffa3"
+  };
 
-// ── Storage backend: use localStorage with a "sync to server" simulation
-// For real shared-data deployment, replace readData/writeData with a backend API call.
-// Here we use localStorage as the data store so the file works standalone,
-// with a share key in the URL so all users sharing the same URL share the same key.
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const txnsRef = db.ref('transactions');
 
-function getStoreKey() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('room') || 'default';
-}
+  // ── State ──
+  const BASE = { 1: 145000, 2: 161000 };
+  let txns = {};   // keyed by Firebase push key
 
-const FULL_KEY = STORAGE_KEY + '_' + getStoreKey();
+  // ── Formatting ──
+  function fmt(n) { return 'Rs ' + Math.round(n).toLocaleString('en-PK'); }
 
-function readData() {
-  try {
-    const raw = localStorage.getItem(FULL_KEY);
-    if (!raw) return { txns: [], nextId: 1 };
-    return JSON.parse(raw);
-  } catch(e) { return { txns: [], nextId: 1 }; }
-}
+  // ── Render ──
+  function render() {
+    const list = Object.values(txns);
 
-function writeData() {
-  try {
-    localStorage.setItem(FULL_KEY, JSON.stringify({ txns, nextId }));
-    setSyncStatus('saved');
-  } catch(e) { setSyncStatus('error'); }
-}
+    [1, 2].forEach(c => {
+      const rows = list.filter(t => t.cow === c);
+      const extra = rows.reduce((s, t) => s + t.amt, 0);
+      const total = BASE[c] + extra;
+      const hissa = total / 7;
 
-function setSyncStatus(state) {
-  const dot = document.getElementById('sync-dot');
-  const label = document.getElementById('sync-label');
-  dot.className = 'sync-dot';
-  if (state === 'loading') { dot.classList.add('syncing'); label.textContent = 'Loading…'; }
-  else if (state === 'saving') { dot.classList.add('syncing'); label.textContent = 'Saving…'; }
-  else if (state === 'saved') { label.textContent = 'Data saved — room: ' + getStoreKey(); }
-  else if (state === 'error') { dot.classList.add('error'); label.textContent = 'Save failed — check storage'; }
-}
+      document.getElementById('c'+c+'-total').textContent = fmt(total);
+      document.getElementById('c'+c+'-hissa').textContent = fmt(hissa);
 
-// ── Poll for updates every 5s (so multiple tabs/devices see changes)
-function pollUpdates() {
-  const fresh = readData();
-  const freshStr = JSON.stringify(fresh.txns);
-  const currStr = JSON.stringify(txns);
-  if (freshStr !== currStr) {
-    txns = fresh.txns;
-    nextId = fresh.nextId;
+      const eb = document.getElementById('c'+c+'-extra');
+      eb.textContent = extra > 0 ? '+' + fmt(extra) + ' extra' : 'Base price only';
+
+      const listEl = document.getElementById('t'+c+'-list');
+      const footer = document.getElementById('t'+c+'-footer');
+      const count  = document.getElementById('c'+c+'-count');
+
+      count.textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries');
+
+      if (rows.length === 0) {
+        listEl.innerHTML = '<div class="txn-empty"><div class="empty-icon">📋</div><div>No expenses added yet</div></div>';
+        footer.style.display = 'none';
+      } else {
+        // Sort by timestamp descending (newest first)
+        const sorted = [...rows].sort((a,b) => (b.ts||0) - (a.ts||0));
+        listEl.innerHTML = sorted.map(t => `
+          <div class="txn-item">
+            <span class="cat-pill cat-${t.cat}">${t.cat}</span>
+            <span class="txn-desc" title="${t.desc||''}">${t.desc || '—'}</span>
+            <span class="txn-amt">${fmt(t.amt)}</span>
+            <button class="btn-del" onclick="del('${t.key}')" title="Delete" aria-label="Delete">✕</button>
+          </div>
+        `).join('');
+        footer.style.display = 'flex';
+        document.getElementById('t'+c+'-extra-total').textContent = fmt(extra);
+      }
+    });
+  }
+
+  // ── Firebase real-time listener ──
+  txnsRef.on('value', snapshot => {
+    txns = {};
+    if (snapshot.exists()) {
+      snapshot.forEach(child => {
+        txns[child.key] = { ...child.val(), key: child.key };
+      });
+    }
     render();
-    toast('📥 Hisaab updated');
-  }
-}
-
-// ── Formatting
-function fmt(n) { return 'Rs ' + Math.round(n).toLocaleString('en-PK'); }
-
-// ── Render
-function render() {
-  [1,2].forEach(c => {
-    const rows = txns.filter(t => t.cow === c);
-    const extra = rows.reduce((s,t) => s + t.amt, 0);
-    const total = BASE[c] + extra;
-    const hissa = total / 7;
-
-    document.getElementById('c'+c+'-total').textContent = fmt(total);
-    document.getElementById('c'+c+'-hissa').textContent = fmt(hissa);
-
-    const eb = document.getElementById('c'+c+'-extra');
-    if (extra > 0) {
-      eb.textContent = '+' + fmt(extra) + ' extra';
-      eb.style.display = 'inline-block';
-    } else {
-      eb.textContent = 'Base price only';
-      eb.style.display = 'inline-block';
-    }
-
-    const listEl = document.getElementById('t'+c+'-list');
-    const footer = document.getElementById('t'+c+'-footer');
-    const count = document.getElementById('c'+c+'-count');
-
-    count.textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries');
-
-    if (rows.length === 0) {
-      listEl.innerHTML = '<div class="txn-empty"><div class="empty-icon">📋</div><div>No expenses added yet</div></div>';
-      footer.style.display = 'none';
-    } else {
-      listEl.innerHTML = rows.map(t => `
-        <div class="txn-item">
-          <span class="cat-pill cat-${t.cat}">${t.cat}</span>
-          <span class="txn-desc" title="${t.desc || ''}">${t.desc || '—'}</span>
-          <span class="txn-amt">${fmt(t.amt)}</span>
-          <button class="btn-del" onclick="del(${t.id})" title="Delete" aria-label="Delete entry">✕</button>
-        </div>
-      `).join('');
-      footer.style.display = 'flex';
-      document.getElementById('t'+c+'-extra-total').textContent = fmt(extra);
-    }
+    document.getElementById('loading-overlay').style.display = 'none';
+    setSyncStatus('live');
+  }, err => {
+    console.error(err);
+    setSyncStatus('error');
+    document.getElementById('loading-overlay').style.display = 'none';
   });
-}
 
-// ── Add
-function addTxn() {
-  const cow = document.getElementById('sel-cow').value;
-  const cat = document.getElementById('sel-cat').value;
-  const desc = document.getElementById('inp-desc').value.trim();
-  const amtRaw = parseFloat(document.getElementById('inp-amt').value);
+  // ── Add ──
+  function addTxn() {
+    const cow   = document.getElementById('sel-cow').value;
+    const cat   = document.getElementById('sel-cat').value;
+    const desc  = document.getElementById('inp-desc').value.trim();
+    const amtRaw = parseFloat(document.getElementById('inp-amt').value);
 
-  if (!amtRaw || amtRaw <= 0) {
-    document.getElementById('inp-amt').focus();
-    shake(document.getElementById('inp-amt'));
-    return;
+    if (!amtRaw || amtRaw <= 0) {
+      shake(document.getElementById('inp-amt'));
+      return;
+    }
+
+    const btn = document.getElementById('btn-add');
+    btn.disabled = true;
+    setSyncStatus('saving');
+
+    const writes = [];
+
+    if (cow === 'both') {
+      const half = amtRaw / 2;
+      writes.push(txnsRef.push({ cow: 1, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half, ts: Date.now() }));
+      writes.push(txnsRef.push({ cow: 2, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half, ts: Date.now() }));
+    } else {
+      writes.push(txnsRef.push({ cow: parseInt(cow), cat, desc, amt: amtRaw, ts: Date.now() }));
+    }
+
+    Promise.all(writes).then(() => {
+      document.getElementById('inp-amt').value = '';
+      document.getElementById('inp-desc').value = '';
+      btn.disabled = false;
+      toast(cow === 'both' ? '✦ Added to both cows' : '✦ Added to Cow ' + cow);
+    }).catch(e => {
+      console.error(e);
+      btn.disabled = false;
+      setSyncStatus('error');
+      toast('⚠ Save failed — check connection');
+    });
   }
 
-  setSyncStatus('saving');
-  if (cow === 'both') {
-    const half = amtRaw / 2;
-    txns.push({ id: nextId++, cow: 1, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half });
-    txns.push({ id: nextId++, cow: 2, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half });
-    toast('✦ Added to both cows (Rs ' + Math.round(half).toLocaleString('en-PK') + ' each)');
-  } else {
-    txns.push({ id: nextId++, cow: parseInt(cow), cat, desc, amt: amtRaw });
-    toast('✦ Added to Cow ' + cow);
+  // ── Delete ──
+  function del(key) {
+    setSyncStatus('saving');
+    txnsRef.child(key).remove()
+      .then(() => toast('🗑 Entry removed'))
+      .catch(e => { console.error(e); setSyncStatus('error'); });
   }
 
-  document.getElementById('inp-amt').value = '';
-  document.getElementById('inp-desc').value = '';
-  writeData();
-  render();
-}
+  // ── Sync status ──
+  function setSyncStatus(state) {
+    const dot   = document.getElementById('sync-dot');
+    const label = document.getElementById('sync-label');
+    dot.className = 'sync-dot';
+    if (state === 'live')   { label.textContent = '🔴 Live — changes sync instantly across all devices'; }
+    if (state === 'saving') { dot.classList.add('syncing'); label.textContent = 'Saving…'; }
+    if (state === 'error')  { dot.classList.add('error');   label.textContent = 'Connection error — check internet'; }
+  }
 
-// ── Delete
-function del(id) {
-  txns = txns.filter(t => t.id !== id);
-  writeData();
-  render();
-  toast('🗑 Entry removed');
-}
+  // ── Toast ──
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => el.classList.remove('show'), 2800);
+  }
 
-// ── Toast
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  clearTimeout(toast._t);
-  toast._t = setTimeout(() => el.classList.remove('show'), 2500);
-}
-
-// ── Shake animation for invalid input
-function shake(el) {
-  el.style.animation = 'none';
-  el.style.borderColor = '#c62828';
-  setTimeout(() => {
-    el.style.borderColor = '';
+  // ── Shake invalid input ──
+  function shake(el) {
+    el.style.borderColor = '#c62828';
     el.style.boxShadow = '0 0 0 3px rgba(198,40,40,0.15)';
-    setTimeout(() => { el.style.boxShadow = ''; }, 600);
-  }, 150);
-}
+    el.focus();
+    setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 700);
+  }
 
-// ── Enter key on amount field
-document.getElementById('inp-amt').addEventListener('keydown', e => {
-  if (e.key === 'Enter') addTxn();
-});
-
-// ── Init
-setSyncStatus('loading');
-const saved = readData();
-txns = saved.txns;
-nextId = saved.nextId;
-render();
-setSyncStatus('saved');
-
-// Poll every 8s for multi-device sync
-setInterval(pollUpdates, 8000);
+  // ── Enter key ──
+  document.getElementById('inp-amt').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addTxn();
+  });
 </script>
 </body>
 </html>
