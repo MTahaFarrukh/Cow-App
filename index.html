@@ -176,6 +176,87 @@
   .cat-Transport { background: #e3f2fd; color: #1565c0; }
   .cat-Slaughter { background: #fce4ec; color: #c62828; }
   .cat-Misc      { background: #f3e5f5; color: #6a1b9a; }
+  .cat-PaidBy    { background: #fff3e0; color: #e65100; border: 1px dashed #ffb74d; }
+
+  .payer-pill {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 6px; border-radius: 4px; white-space: nowrap;
+  }
+  .payer-Sikander { background: #e3f2fd; color: #1565c0; }
+  .payer-Aman     { background: #fce4ec; color: #ad1457; }
+
+  /* Paid By section */
+  .paidby-panel {
+    background: linear-gradient(135deg, #fff8e1 0%, #fffef9 40%, #fce4ec 100%);
+    border: 2px solid #e8a93a;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .paidby-panel::before {
+    content: '💰';
+    position: absolute; right: 12px; top: 12px;
+    font-size: 3rem; opacity: 0.12;
+  }
+  .paidby-panel .panel-title { color: #b8860b; margin-bottom: 0.35rem; }
+  .paidby-subtitle { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.1rem; }
+
+  .paidby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+  .payer-card {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.15rem;
+    border: 1.5px solid var(--border);
+    position: relative;
+  }
+  .payer-card.pc-sikander { border-color: #90caf9; border-left: 4px solid var(--blue-mid); }
+  .payer-card.pc-aman     { border-color: #f48fb1; border-left: 4px solid #c2185b; }
+  .payer-card-name { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem; }
+  .payer-card.pc-sikander .payer-card-name { color: var(--blue); }
+  .payer-card.pc-aman .payer-card-name { color: #ad1457; }
+  .payer-total { font-family: 'Amiri', serif; font-size: 1.65rem; line-height: 1.1; }
+  .payer-card.pc-sikander .payer-total { color: var(--blue); }
+  .payer-card.pc-aman .payer-total { color: #ad1457; }
+  .payer-detail { font-size: 0.7rem; color: var(--text-faint); margin-top: 0.4rem; line-height: 1.5; }
+
+  .settle-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.75rem; padding-top: 1rem;
+    border-top: 1px dashed var(--border-dark);
+  }
+  .settle-box {
+    background: rgba(255,255,255,0.7);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+  }
+  .settle-box .settle-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); font-weight: 600; }
+  .settle-box .settle-val { font-size: 1rem; font-weight: 600; margin-top: 3px; }
+  .settle-box.positive .settle-val { color: var(--green); }
+  .settle-box.negative .settle-val { color: #c62828; }
+  .settle-box.neutral .settle-val { color: var(--text-muted); }
+
+  .hissa-split { margin-top: 0.5rem; font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
+  .hissa-split strong { color: var(--text); font-weight: 600; }
+
+  .paidby-list-wrap { margin-top: 0.5rem; }
+  .paidby-list-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); margin-bottom: 0.5rem; }
+  .paidby-item {
+    display: grid; grid-template-columns: auto 1fr auto auto;
+    align-items: center; gap: 8px;
+    padding: 0.55rem 0.75rem;
+    background: rgba(255,255,255,0.85);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.4rem;
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+  }
+  .paidby-empty { font-size: 0.8rem; color: var(--text-faint); padding: 0.5rem 0; }
+
+  .txn-item.has-payer { grid-template-columns: auto auto 1fr auto auto; }
 
   .txn-desc { font-size: 0.82rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .txn-amt { font-size: 0.88rem; font-weight: 600; color: var(--text); white-space: nowrap; }
@@ -230,7 +311,7 @@
   .loading-overlay p { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--text-muted); }
 
   @media (max-width: 600px) {
-    .cow-grid, .txn-grid, .form-grid { grid-template-columns: 1fr; }
+    .cow-grid, .txn-grid, .form-grid, .paidby-grid, .settle-row { grid-template-columns: 1fr; }
     .site-header { padding: 2rem 1rem 1.5rem; }
   }
 
@@ -259,8 +340,9 @@
       <div class="cow-price" id="c1-total">Rs 1,45,000</div>
       <div class="extra-badge" id="c1-extra">Base price only</div>
       <div class="cow-hissa-row">
-        <div class="hissa-label">Per hissa (÷7)</div>
+        <div class="hissa-label">Per hissa (÷7) — Aman 6 · Sikander 1</div>
         <div class="hissa-amount" id="c1-hissa">Rs 20,714</div>
+        <div class="hissa-split" id="c1-hissa-split"></div>
       </div>
     </div>
     <div class="cow-card c2">
@@ -268,9 +350,41 @@
       <div class="cow-price" id="c2-total">Rs 1,61,000</div>
       <div class="extra-badge" id="c2-extra">Base price only</div>
       <div class="cow-hissa-row">
-        <div class="hissa-label">Per hissa (÷7)</div>
+        <div class="hissa-label">Per hissa (÷7) — Sikander 7</div>
         <div class="hissa-amount" id="c2-hissa">Rs 23,000</div>
+        <div class="hissa-split" id="c2-hissa-split"></div>
       </div>
+    </div>
+  </div>
+
+  <div class="paidby-panel" id="paidby-panel">
+    <div class="panel-title"><span>💰</span> Paid By — Kis Ne Kitne Lagaye</div>
+    <p class="paidby-subtitle">Advance alag count hoti hai — cow kharcha nahi badhta. Dono cows pe split bhi ho sakta hai</p>
+    <div class="paidby-grid">
+      <div class="payer-card pc-sikander">
+        <div class="payer-card-name">Sikander</div>
+        <div class="payer-total" id="paid-sikander">Rs 0</div>
+        <div class="payer-detail" id="paid-sikander-detail">Kharchay + advance</div>
+      </div>
+      <div class="payer-card pc-aman">
+        <div class="payer-card-name">Aman</div>
+        <div class="payer-total" id="paid-aman">Rs 0</div>
+        <div class="payer-detail" id="paid-aman-detail">Kharchay + advance</div>
+      </div>
+    </div>
+    <div class="settle-row">
+      <div class="settle-box" id="settle-sikander">
+        <div class="settle-label">Sikander — hissa vs lagaye (8 total)</div>
+        <div class="settle-val" id="bal-sikander">—</div>
+      </div>
+      <div class="settle-box" id="settle-aman">
+        <div class="settle-label">Aman — hissa vs lagaye (6 Taha)</div>
+        <div class="settle-val" id="bal-aman">—</div>
+      </div>
+    </div>
+    <div class="paidby-list-wrap">
+      <div class="paidby-list-title">Advance / Paid By entries</div>
+      <div id="paidby-list"></div>
     </div>
   </div>
 
@@ -293,11 +407,19 @@
           <option>Transport</option>
           <option>Slaughter</option>
           <option>Misc</option>
+          <option>Paid By</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="sel-paidby">Paid By</label>
+        <select id="sel-paidby">
+          <option value="Sikander">Sikander</option>
+          <option value="Aman">Aman</option>
         </select>
       </div>
       <div class="field">
         <label class="field-label" for="inp-desc">Description</label>
-        <input type="text" id="inp-desc" placeholder="e.g. Dal mandi transport…" />
+        <input type="text" id="inp-desc" placeholder="e.g. Fodder advance, transport…" />
       </div>
       <div class="field">
         <label class="field-label" for="inp-amt">Amount (Rs)</label>
@@ -365,29 +487,97 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
   const txnsRef = db.ref('transactions');
+  const metaRef = db.ref('meta');
 
   // ── State ──
   const BASE = { 1: 145000, 2: 161000 };
-  let txns = {};   // keyed by Firebase push key
+  const HISSA = {
+    1: { Aman: 6, Sikander: 1 },
+    2: { Sikander: 7 }
+  };
+  const PAYERS = ['Sikander', 'Aman'];
+  const INITIAL_PAYMENTS = [
+    { cow: 1, paidBy: 'Sikander', amt: 145000, cat: 'Paid By', desc: 'Initial — Taha cow base', initial: true },
+    { cow: 2, paidBy: 'Aman',     amt: 161000, cat: 'Paid By', desc: 'Initial — Sikander cow base', initial: true }
+  ];
+  let txns = {};
+  let seedChecked = false;
 
-  // ── Formatting ──
   function fmt(n) { return 'Rs ' + Math.round(n).toLocaleString('en-PK'); }
+  function catClass(cat) { return 'cat-' + (cat || '').replace(/\s+/g, ''); }
+  function isAdvance(t) { return t.cat === 'Paid By'; }
+  function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
-  // ── Render ──
+  function payerPill(paidBy) {
+    if (!paidBy || !PAYERS.includes(paidBy)) return '';
+    return `<span class="payer-pill payer-${paidBy}">${paidBy}</span>`;
+  }
+
+  function txnRow(t, showCow) {
+    const pb = payerPill(t.paidBy);
+    const cowLbl = showCow ? (t.cow === 1 ? 'Taha' : 'Sikander') + ' · ' : '';
+    return `
+      <div class="txn-item${pb ? ' has-payer' : ''}">
+        <span class="cat-pill ${catClass(t.cat)}">${t.cat}</span>
+        ${pb}
+        <span class="txn-desc" title="${esc(cowLbl + (t.desc||''))}">${cowLbl}${t.desc || '—'}</span>
+        <span class="txn-amt">${fmt(t.amt)}</span>
+        <button class="btn-del" onclick="del('${t.key}')" title="Delete" aria-label="Delete">✕</button>
+      </div>`;
+  }
+
+  function setBalance(elId, boxId, balance) {
+    const el = document.getElementById(elId);
+    const box = document.getElementById(boxId);
+    box.className = 'settle-box';
+    if (Math.abs(balance) < 1) {
+      el.textContent = 'Settled ✓';
+      box.classList.add('neutral');
+    } else if (balance > 0) {
+      el.textContent = fmt(balance) + ' extra lagaye';
+      box.classList.add('positive');
+    } else {
+      el.textContent = fmt(-balance) + ' dena baqi';
+      box.classList.add('negative');
+    }
+  }
+
   function render() {
     const list = Object.values(txns);
+    const totals = { Sikander: 0, Aman: 0 };
+    const paidDetail = { Sikander: { kharcha: 0, advance: 0, initial: 0 }, Aman: { kharcha: 0, advance: 0, initial: 0 } };
+    const cowTotals = { 1: 0, 2: 0 };
+
+    list.forEach(t => {
+      if (!isAdvance(t)) cowTotals[t.cow] = (cowTotals[t.cow] || 0) + t.amt;
+      const p = t.paidBy;
+      if (p && PAYERS.includes(p)) {
+        totals[p] += t.amt;
+        if (t.initial) paidDetail[p].initial += t.amt;
+        else if (isAdvance(t)) paidDetail[p].advance += t.amt;
+        else paidDetail[p].kharcha += t.amt;
+      }
+    });
 
     [1, 2].forEach(c => {
-      const rows = list.filter(t => t.cow === c);
-      const extra = rows.reduce((s, t) => s + t.amt, 0);
+      const rows = list.filter(t => t.cow === c && !isAdvance(t));
+      const extra = cowTotals[c] || 0;
       const total = BASE[c] + extra;
       const hissa = total / 7;
+      const shares = HISSA[c];
 
       document.getElementById('c'+c+'-total').textContent = fmt(total);
       document.getElementById('c'+c+'-hissa').textContent = fmt(hissa);
 
+      let splitHtml = '';
+      Object.entries(shares).forEach(([name, n]) => {
+        const shareAmt = (total * n) / 7;
+        splitHtml += `<div><strong>${name}</strong> (${n} hissa): ${fmt(shareAmt)}</div>`;
+      });
+      document.getElementById('c'+c+'-hissa-split').innerHTML = splitHtml;
+
       const eb = document.getElementById('c'+c+'-extra');
-      eb.textContent = extra > 0 ? '+' + fmt(extra) + ' extra' : 'Base price only';
+      eb.textContent = extra > 0 ? '+' + fmt(extra) + ' kharcha' : 'Base price only';
 
       const listEl = document.getElementById('t'+c+'-list');
       const footer = document.getElementById('t'+c+'-footer');
@@ -396,22 +586,64 @@
       count.textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries');
 
       if (rows.length === 0) {
-        listEl.innerHTML = '<div class="txn-empty"><div class="empty-icon">📋</div><div>No expenses added yet</div></div>';
+        listEl.innerHTML = '<div class="txn-empty"><div class="empty-icon">📋</div><div>No kharchay yet</div></div>';
         footer.style.display = 'none';
       } else {
-        // Sort by timestamp descending (newest first)
         const sorted = [...rows].sort((a,b) => (b.ts||0) - (a.ts||0));
-        listEl.innerHTML = sorted.map(t => `
-          <div class="txn-item">
-            <span class="cat-pill cat-${t.cat}">${t.cat}</span>
-            <span class="txn-desc" title="${t.desc||''}">${t.desc || '—'}</span>
-            <span class="txn-amt">${fmt(t.amt)}</span>
-            <button class="btn-del" onclick="del('${t.key}')" title="Delete" aria-label="Delete">✕</button>
-          </div>
-        `).join('');
+        listEl.innerHTML = sorted.map(t => txnRow(t, false)).join('');
         footer.style.display = 'flex';
         document.getElementById('t'+c+'-extra-total').textContent = fmt(extra);
       }
+    });
+
+    const t1Total = BASE[1] + cowTotals[1];
+    const t2Total = BASE[2] + cowTotals[2];
+    const fairSikander = (t1Total * 1 / 7) + (t2Total * 7 / 7);
+    const fairAman = (t1Total * 6 / 7);
+
+    document.getElementById('paid-sikander').textContent = fmt(totals.Sikander);
+    document.getElementById('paid-aman').textContent = fmt(totals.Aman);
+    function paidSummary(d) {
+      return 'Initial: ' + fmt(d.initial) + ' · Kharchay: ' + fmt(d.kharcha) + ' · Advance: ' + fmt(d.advance);
+    }
+    document.getElementById('paid-sikander-detail').textContent = paidSummary(paidDetail.Sikander);
+    document.getElementById('paid-aman-detail').textContent = paidSummary(paidDetail.Aman);
+
+    setBalance('bal-sikander', 'settle-sikander', totals.Sikander - fairSikander);
+    setBalance('bal-aman', 'settle-aman', totals.Aman - fairAman);
+
+    const advances = list.filter(isAdvance).sort((a,b) => (b.ts||0) - (a.ts||0));
+    const pbList = document.getElementById('paidby-list');
+    if (advances.length === 0) {
+      pbList.innerHTML = '<div class="paidby-empty">Abhi koi advance entry nahi — category "Paid By" se add karo</div>';
+    } else {
+      pbList.innerHTML = advances.map(t => `
+        <div class="paidby-item">
+          <span class="cat-pill cat-PaidBy">${t.initial ? 'Initial' : 'Advance'}</span>
+          ${payerPill(t.paidBy)}
+          <span class="txn-desc" title="${esc(t.desc||'')}">${t.cow === 1 ? 'Taha' : 'Sikander'} · ${t.desc || '—'}</span>
+          <span class="txn-amt">${fmt(t.amt)}</span>
+          <button class="btn-del" onclick="del('${t.key}')" title="Delete" aria-label="Delete">✕</button>
+        </div>
+      `).join('');
+    }
+  }
+
+  function seedInitialPayments() {
+    if (seedChecked) return;
+    seedChecked = true;
+    metaRef.child('initialPaymentsSeeded').once('value', snap => {
+      if (snap.val()) return;
+      if (Object.values(txns).some(t => t.initial)) {
+        metaRef.child('initialPaymentsSeeded').set(true);
+        return;
+      }
+      setSyncStatus('saving');
+      const ts = Date.now();
+      Promise.all(
+        INITIAL_PAYMENTS.map(p => txnsRef.push({ ...p, ts: ts - 1 }))
+      ).then(() => metaRef.child('initialPaymentsSeeded').set(true))
+        .catch(e => { console.error(e); setSyncStatus('error'); });
     });
   }
 
@@ -423,6 +655,7 @@
         txns[child.key] = { ...child.val(), key: child.key };
       });
     }
+    seedInitialPayments();
     render();
     document.getElementById('loading-overlay').style.display = 'none';
     setSyncStatus('live');
@@ -434,9 +667,10 @@
 
   // ── Add ──
   function addTxn() {
-    const cow   = document.getElementById('sel-cow').value;
-    const cat   = document.getElementById('sel-cat').value;
-    const desc  = document.getElementById('inp-desc').value.trim();
+    const cow    = document.getElementById('sel-cow').value;
+    const cat    = document.getElementById('sel-cat').value;
+    const paidBy = document.getElementById('sel-paidby').value;
+    const desc   = document.getElementById('inp-desc').value.trim();
     const amtRaw = parseFloat(document.getElementById('inp-amt').value);
 
     if (!amtRaw || amtRaw <= 0) {
@@ -449,20 +683,23 @@
     setSyncStatus('saving');
 
     const writes = [];
+    const base = { cat, paidBy, ts: Date.now() };
 
     if (cow === 'both') {
       const half = amtRaw / 2;
-      writes.push(txnsRef.push({ cow: 1, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half, ts: Date.now() }));
-      writes.push(txnsRef.push({ cow: 2, cat, desc: desc ? desc + ' (split)' : '(split)', amt: half, ts: Date.now() }));
+      writes.push(txnsRef.push({ ...base, cow: 1, desc: desc ? desc + ' (split)' : '(split)', amt: half }));
+      writes.push(txnsRef.push({ ...base, cow: 2, desc: desc ? desc + ' (split)' : '(split)', amt: half }));
     } else {
-      writes.push(txnsRef.push({ cow: parseInt(cow), cat, desc, amt: amtRaw, ts: Date.now() }));
+      writes.push(txnsRef.push({ ...base, cow: parseInt(cow), desc, amt: amtRaw }));
     }
 
     Promise.all(writes).then(() => {
       document.getElementById('inp-amt').value = '';
       document.getElementById('inp-desc').value = '';
       btn.disabled = false;
-      toast(cow === 'both' ? '✦ Added to both cows' : '✦ Added to ' + cow);
+      const kind = cat === 'Paid By' ? 'advance' : 'kharcha';
+      const splitNote = cow === 'both' ? ' (50-50 split)' : '';
+      toast('✦ ' + paidBy + ' — ' + kind + splitNote + ' add');
     }).catch(e => {
       console.error(e);
       btn.disabled = false;
