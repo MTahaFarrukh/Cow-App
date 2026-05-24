@@ -411,8 +411,9 @@
         </select>
       </div>
       <div class="field">
-        <label class="field-label" for="sel-paidby">Paid By</label>
+        <label class="field-label" for="sel-paidby">Paid By <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
         <select id="sel-paidby">
+          <option value="">— Not set —</option>
           <option value="Sikander">Sikander</option>
           <option value="Aman">Aman</option>
         </select>
@@ -676,7 +677,8 @@
     setSyncStatus('saving');
 
     const writes = [];
-    const base = { cat, paidBy, ts: Date.now() };
+    const base = { cat, ts: Date.now() };
+    if (paidBy) base.paidBy = paidBy;
 
     if (cow === 'both') {
       const half = amtRaw / 2;
@@ -692,7 +694,8 @@
       btn.disabled = false;
       const kind = cat === 'Paid By' ? 'advance' : 'kharcha';
       const splitNote = cow === 'both' ? ' (50-50 split)' : '';
-      toast('✦ ' + paidBy + ' — ' + kind + splitNote + ' add');
+      const who = paidBy ? paidBy + ' — ' : '';
+      toast('✦ ' + who + kind + splitNote + ' add');
     }).catch(e => {
       console.error(e);
       btn.disabled = false;
